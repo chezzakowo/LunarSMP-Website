@@ -3,234 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LunarSMP - Đang Bảo Trì</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/chezzakowo/LunarSMP-Website/refs/heads/main/assets/Logo/logo.ico">
-    <meta content="LunarSMP - Đang Bảo Trì" property="og:title" />
-    <meta content="Máy chủ Minecraft LunarSMP đang trong quá trình bảo trì. Chúng tôi sẽ quay lại sớm!" property="og:description" />
-    <meta content="#4f46e5" data-react-helmet="true" name="theme-color" />
+    <title>Cảm Ơn - LunarSMP</title>
     <style>
-        /* Base styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
-        body, html {
-            height: 100%;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-            overflow: hidden;
-            background: #0f172a;
-            color: white;
-        }
-        
-        .maintenance-container {
-            position: relative;
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Pixel', monospace;
             height: 100vh;
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            overflow: hidden;
-            z-index: 1;
+            line-height: 1.6;
         }
         
-        .background-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            z-index: -1;
+        /* Pixel font */
+        @font-face {
+            font-family: 'Pixel';
+            src: url('https://dl.dropbox.com/s/2g9r4l4v2bw9a0d/MinecraftRegular.otf') format('opentype');
         }
         
-        .stars {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        
-        .star {
-            position: absolute;
-            background-color: white;
-            border-radius: 50%;
-            animation: twinkle 5s infinite;
-        }
-        
-        @keyframes twinkle {
-            0% { opacity: 0.2; }
-            50% { opacity: 1; }
-            100% { opacity: 0.2; }
-        }
-        
-        .content {
+        .container {
             max-width: 800px;
             padding: 2rem;
+            position: relative;
             z-index: 2;
         }
         
         .logo {
             margin-bottom: 2rem;
+            animation: float 3s ease-in-out infinite;
         }
         
         .logo img {
             height: 180px;
-            filter: drop-shadow(0 0 10px rgba(79, 70, 229, 0.5));
-            animation: float 3s ease-in-out infinite;
+            image-rendering: pixelated;
         }
         
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 5px 5px 0 rgba(255,255,255,0.1);
+            animation: text-glitch 8s infinite;
+        }
+        
+        .quote {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
+            border: 3px solid #fff;
+            background: rgba(20,20,20,0.7);
+            position: relative;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+        }
+        
+        .pixel-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.1;
+        }
+        
+        .pixel {
+            position: absolute;
+            background: #fff;
+            width: 20px;
+            height: 20px;
+            animation: pixel-fade 3s infinite alternate;
+        }
+        
+        .minecraft-border {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 4px solid #fff;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        /* Animations */
         @keyframes float {
             0% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0); }
         }
         
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            color: #e2e8f0;
-            text-shadow: 0 0 10px rgba(79, 70, 229, 0.7);
-            animation: pulse 2s infinite;
+        @keyframes pixel-fade {
+            0% { opacity: 0.05; }
+            100% { opacity: 0.2; }
         }
         
-        @keyframes pulse {
-            0% { text-shadow: 0 0 10px rgba(79, 70, 229, 0.7); }
-            50% { text-shadow: 0 0 20px rgba(79, 70, 229, 0.9), 0 0 30px rgba(79, 70, 229, 0.5); }
-            100% { text-shadow: 0 0 10px rgba(79, 70, 229, 0.7); }
+        @keyframes text-glitch {
+            0% { transform: translate(0); }
+            97% { transform: translate(0); }
+            98% { transform: translate(3px, -3px); }
+            99% { transform: translate(-3px, 3px); }
+            100% { transform: translate(0); }
         }
         
-        .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 3rem;
-            color: #cbd5e1;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .buttons-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 28px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: white;
-            border-radius: 9999px;
-            border: none;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            min-width: 180px;
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
-        }
-        
-        .btn i {
-            margin-right: 10px;
-            font-size: 1.3rem;
-        }
-        
-        .discord-btn {
-            background: linear-gradient(to right, #5865F2, #4752C4);
-        }
-        
-        .discord-btn:hover {
-            background: linear-gradient(to right, #4752C4, #5865F2);
-        }
-        
-        .donate-btn {
-            background: linear-gradient(to right, #10b981, #059669);
-        }
-        
-        .donate-btn:hover {
-            background: linear-gradient(to right, #059669, #10b981);
-        }
-        
-        .progress-container {
-            width: 80%;
-            max-width: 500px;
-            height: 12px;
-            background: #334155;
-            border-radius: 10px;
-            margin: 3rem auto;
-            overflow: hidden;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, #8b5cf6, #6366f1);
-            border-radius: 10px;
-            width: 65%;
-            animation: progress 2s ease-in-out infinite;
-        }
-        
-        @keyframes progress {
-            0% { width: 60%; }
-            50% { width: 70%; }
-            100% { width: 60%; }
-        }
-        
-        .counter {
-            font-size: 1rem;
-            color: #94a3b8;
-            margin-top: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .counter i {
-            color: #f87171;
-            animation: heartbeat 1.2s infinite;
-        }
-        
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-        
-        /* Responsive design */
+        /* Responsive */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.5rem;
             }
             
-            .subtitle {
-                font-size: 1.2rem;
+            .quote {
+                font-size: 1.1rem;
+                padding: 1.5rem;
             }
             
             .logo img {
                 height: 140px;
-            }
-            
-            .buttons-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
             }
         }
         
@@ -239,8 +137,9 @@
                 font-size: 2rem;
             }
             
-            .subtitle {
+            .quote {
                 font-size: 1rem;
+                padding: 1rem;
             }
             
             .logo img {
@@ -250,71 +149,68 @@
     </style>
 </head>
 <body>
-    <div class="maintenance-container">
-        <div class="background-overlay"></div>
-        <div class="stars" id="stars"></div>
+    <div class="pixel-grid" id="pixels"></div>
+    <div class="minecraft-border"></div>
+    
+    <div class="container">
+        <div class="logo">
+            <img src="https://raw.githubusercontent.com/chezzakowo/LunarSMP-Website/refs/heads/main/assets/Logo/1080x1080.png" alt="LunarSMP Logo">
+        </div>
         
-        <div class="content">
-            <div class="logo">
-                <img src="https://raw.githubusercontent.com/chezzakowo/LunarSMP-Website/refs/heads/main/assets/Logo/1080x1080.png" alt="LunarSMP Logo">
-            </div>
-            
-            <h1>Đang bảo trì website và máy chủ!</h1>
-            <p class="subtitle">Bọn mình sẽ quay trở lại sớm thôi!</p>
-            
-            <div class="progress-container">
-                <div class="progress-bar"></div>
-            </div>
-            
-            <div class="counter">
-                <i class="fas fa-heart"></i>
-                <span>Cảm ơn bạn đã kiên nhẫn chờ đợi! Hãy vô Discord dể biết thêm thông tin nhé!</span>
-            </div>
-            
-            <div class="buttons-container">
-                <a href="http://dsc.gg/mclunarsmp" class="btn discord-btn">
-                    <i class="fab fa-discord"></i> Discord
-                </a>
-                <a href="https://lunarsmp.gitbook.io/lunarsmp/wiki/donate" class="btn donate-btn">
-                    <i class="fas fa-donate"></i> Donate
-                </a>
-            </div>
+        <h1>Cảm ơn vì bạn đã đồng hành cùng bọn mình!</h1>
+        
+        <div class="quote">
+            "Những kỷ niệm chúng ta tạo ra trong thế giới khối vuông này sẽ mãi là kho báu quý giá. 
+            Mỗi công trình, mỗi trận chiến, mỗi đêm thức khuya - tất cả đã trở thành một phần hành trình đáng nhớ. 
+            Cảm ơn bạn đã là một phần của cộng đồng LunarSMP."
         </div>
     </div>
 
     <script>
-        // Create stars for background
-        function createStars() {
-            const starsContainer = document.getElementById('stars');
-            const starCount = 150;
+        // Create pixel grid background
+        function createPixels() {
+            const container = document.getElementById('pixels');
+            const pixelSize = 20;
+            const cols = Math.floor(window.innerWidth / pixelSize);
+            const rows = Math.floor(window.innerHeight / pixelSize);
             
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.classList.add('star');
-                
-                // Random position
-                const left = Math.random() * 100;
-                const top = Math.random() * 100;
-                
-                // Random size (1-3px)
-                const size = Math.random() * 2 + 1;
-                
-                // Random animation delay
-                const delay = Math.random() * 5;
-                
-                star.style.left = `${left}%`;
-                star.style.top = `${top}%`;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                star.style.animationDelay = `${delay}s`;
-                
-                starsContainer.appendChild(star);
+            for (let i = 0; i < rows; i++) {
+                for (let j = 0; j < cols; j++) {
+                    // Only show 20% of pixels
+                    if (Math.random() > 0.2) continue;
+                    
+                    const pixel = document.createElement('div');
+                    pixel.classList.add('pixel');
+                    pixel.style.left = `${j * pixelSize}px`;
+                    pixel.style.top = `${i * pixelSize}px`;
+                    
+                    // Random animation delay
+                    const delay = Math.random() * 3;
+                    pixel.style.animationDelay = `${delay}s`;
+                    
+                    // Random opacity variation
+                    const opacity = Math.random() * 0.1 + 0.05;
+                    pixel.style.opacity = opacity;
+                    
+                    container.appendChild(pixel);
+                }
             }
         }
         
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', () => {
-            createStars();
+            createPixels();
+            
+            // Add subtle glitch effect to text
+            const h1 = document.querySelector('h1');
+            setInterval(() => {
+                if (Math.random() > 0.9) {
+                    h1.style.animation = 'none';
+                    setTimeout(() => {
+                        h1.style.animation = 'text-glitch 8s infinite';
+                    }, 50);
+                }
+            }, 3000);
         });
     </script>
 </body>
